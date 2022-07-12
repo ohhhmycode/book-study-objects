@@ -2,14 +2,27 @@ import Invitation from "./Invitation";
 import Ticket from "./Ticket";
 
 class Bag {
-    private _amount: number;
-    private _invitation: Invitation;
-    private _ticket: Ticket;
+    private _amount: number | null;
+    private _invitation: Invitation | null;
+    private _ticket: Ticket | null;
 
-    constructor (amount: number, invitation: Invitation, ticket: Ticket) {
-        this._amount = amount;
-        this._invitation = invitation;
-        this._ticket = ticket;
+    private constructor () {
+        this._amount = null;
+        this._invitation = null;
+        this._ticket = null;
+    }
+
+    static withInvitation(invitation: Invitation, amount: number): Bag {
+        const instance = new this();
+        instance._invitation = invitation;
+        instance._amount = amount;
+        return instance;
+    }
+
+    static withoutInvitation(amount: number): Bag {
+        const instance = new this();
+        instance._amount = amount;
+        return instance;
     }
 
     hasInvitation(): boolean {
@@ -25,11 +38,15 @@ class Bag {
     }
 
     minusAmount(amount: number): void {
-        this._amount -= amount;
+        if (this._amount !== null) {
+            this._amount -= amount;
+        }
     }
 
     plusAmount(amount: number): void {
-        this._amount += amount;
+        if (this._amount !== null) {
+            this._amount += amount;
+        }
     }
 }
 
