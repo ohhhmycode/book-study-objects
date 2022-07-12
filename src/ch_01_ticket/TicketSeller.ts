@@ -9,19 +9,10 @@ class TicketSeller {
     }
 
     sellTo(audience: Audience): void {
-        if (audience.bag.hasInvitation()) {
-            const ticket = this._ticketOffice.getTicket();
-            if (ticket !== undefined) {
-                audience.bag.ticket = ticket;
-            }
-        }
-        else {
-            const ticket = this._ticketOffice.getTicket();
-            if (ticket !== undefined) {
-                audience.bag.minusAmount(ticket.fee);
-                this._ticketOffice.plusAmount(ticket.fee);
-                audience.bag.ticket = ticket;
-            }
+        const ticket = this._ticketOffice.getTicket();
+        if (ticket !== undefined) {
+            const amount = audience.buy(ticket);
+            this._ticketOffice.plusAmount(amount);
         }
     }
 }
