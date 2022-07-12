@@ -1,4 +1,3 @@
-import Audience from "./Audience";
 import Ticket from "./Ticket";
 
 class TicketOffice {
@@ -10,22 +9,15 @@ class TicketOffice {
         this._tickets = tickets;
     }
 
-    sellTicketTo(audience: Audience): void {
-        const ticket = this.getTicket();
-        if (ticket !== undefined) {
-            this.plusAmount(audience.buy(ticket))
-        }
-    }
-
-    private getTicket(): Ticket | undefined {
+    getTicket(): Ticket | undefined {
         return this._tickets.shift();
     }
 
-    private minusAmount(amount: number) {
+    minusAmount(amount: number) {
         this._amount -= amount;
     }
 
-    private plusAmount(amount: number) {
+    plusAmount(amount: number) {
         this._amount += amount;
     }
 }
