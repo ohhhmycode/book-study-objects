@@ -5,3 +5,5 @@ class Invitation {
         this.when = when;
     }
 }
+
+export default Invitation;

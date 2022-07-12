@@ -9,3 +9,5 @@ class Ticket {
         return this._fee;
     }
 }
+
+export default Ticket;
