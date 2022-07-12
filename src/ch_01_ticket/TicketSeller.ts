@@ -9,11 +9,7 @@ class TicketSeller {
     }
 
     sellTo(audience: Audience): void {
-        const ticket = this._ticketOffice.getTicket();
-        if (ticket !== undefined) {
-            const amount = audience.buy(ticket);
-            this._ticketOffice.plusAmount(amount);
-        }
+        this._ticketOffice.sellTicketTo(audience);
     }
 }
 
