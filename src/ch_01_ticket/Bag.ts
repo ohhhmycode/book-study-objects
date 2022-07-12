@@ -25,25 +25,33 @@ class Bag {
         return instance;
     }
 
-    hasInvitation(): boolean {
+    hold(ticket: Ticket): number {
+        if (this.hasInvitation()) {
+            this._ticket = ticket;
+            return 0;
+        }
+        else {
+            this._ticket = ticket;
+            this.minusAmount(ticket.fee);
+            return ticket.fee;
+        }
+    }
+
+    private hasInvitation(): boolean {
         return this._invitation !== null;
     }
 
-    hasTicket(): boolean {
+    private hasTicket(): boolean {
         return this._ticket !== null;
     }
 
-    set ticket(ticket: Ticket) {
-        this._ticket = ticket;
-    }
-
-    minusAmount(amount: number): void {
+    private minusAmount(amount: number): void {
         if (this._amount !== null) {
             this._amount -= amount;
         }
     }
 
-    plusAmount(amount: number): void {
+    private plusAmount(amount: number): void {
         if (this._amount !== null) {
             this._amount += amount;
         }
