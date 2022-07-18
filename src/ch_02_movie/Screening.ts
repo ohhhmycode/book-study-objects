@@ -1,4 +1,7 @@
+import Customer from "./Customer";
+import Money from "./Money";
 import Movie from "./Movie";
+import Reservation from "./Reservation";
 
 class Screening {
 
@@ -24,6 +27,15 @@ class Screening {
         return this._whenScreened;
     }
 
+    public reserve(customer: Customer, audienceCount: number): Reservation {
+        return new Reservation(customer, this, this.calculateFee(audienceCount), audienceCount);
+    }
+
+    private calculateFee(audienceCount: number): Money {
+        return this._movie.calculateMovieFee(this).times(audienceCount);
+    }
+
 }
 
 export default Screening;
+
