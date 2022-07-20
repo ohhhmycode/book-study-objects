@@ -1,9 +1,9 @@
+import DefaultDiscountPolicy from "./DefaultDiscountPolicy";
 import DiscountCondition from "./DiscountCondition";
-import DiscountPolicy from "./DiscountPolicy";
 import Money from "./Money";
 import Screening from "./Screening";
 
-class PercentDiscountPolicy extends DiscountPolicy {
+class PercentDiscountPolicy extends DefaultDiscountPolicy {
 
     private _percent: number;
 
