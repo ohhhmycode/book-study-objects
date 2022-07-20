@@ -31,9 +31,14 @@ class Screening {
         return new Reservation(customer, this, this.calculateFee(audienceCount), audienceCount);
     }
 
+    public isSequence(sequence: number) {
+        return this._sequence === sequence;
+    }
+
     private calculateFee(audienceCount: number): Money {
         return this._movie.calculateMovieFee(this).times(audienceCount);
     }
+
 
 }
 

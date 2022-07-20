@@ -1,9 +1,9 @@
 import Screening from "./Screening";
 
-interface DiscountPolicy {
+interface DiscountCondition {
 
     isSatisfied(screening: Screening): boolean;
 
 }
 
-export default DiscountPolicy;
+export default DiscountCondition;
