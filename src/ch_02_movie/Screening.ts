@@ -35,6 +35,10 @@ class Screening {
         return this._sequence === sequence;
     }
 
+    public getMovieFee(): Money {
+        return this._movie.fee;
+    }
+
     private calculateFee(audienceCount: number): Money {
         return this._movie.calculateMovieFee(this).times(audienceCount);
     }
